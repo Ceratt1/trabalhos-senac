@@ -11,7 +11,7 @@ class usuario:
         self.tarefas = []
 
 class tarefa:
-    def __init__(self, responsavel ,tituloTarefa, descTarefa, data, sttsTarefa = False):
+    def __init__(self, responsavel ,tituloTarefa, descTarefa, data, sttsTarefa = True):
         self.responsavel = responsavel
         self.titulo = tituloTarefa
         self.descricao = descTarefa
@@ -20,6 +20,11 @@ class tarefa:
     def alterarStatus(self):
         if self.status == False:
             self.status = True
+            print (self.status)
+        else:
+            self.status = False
+            print (self.status)
+
     def attDesc (self):
         novaDescricao = input("digite sua nova descrição: ")
         self.descricao = novaDescricao

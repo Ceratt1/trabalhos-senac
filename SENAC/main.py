@@ -11,10 +11,14 @@ menu = """
 4 - exit"""
 
 
-def criarTarefa(self):
-    nome = self.nome
+def criarTarefa():
+    numero_pessoas_lista = len(users)
+    print (numero_pessoas_lista)
+
+
     titulo = input("digite o titulo da sua tarefa: ")
     descricao = input("digite a descricao da sua tarefa: ")
+    date_time = data_atual
     while True:
         status = input("Deseja ativar sua tarefa? S/N: ").upper()
         if status == "S":
@@ -28,7 +32,7 @@ def criarTarefa(self):
     
     
 def recebernumero():
-    numeros = [1,2,3,4]
+    numeros = [0,1,2,3,4]
     while True:
 
         try:
@@ -42,20 +46,25 @@ def recebernumero():
             print("Aceitamos apenas números de acordo com as opções do menu")
 
 
-if __name__ == "__main__":
-    script_name = os.path.basename(__file__)
-    if script_name == "main.py":
-        print(menu)
-        escolha = recebernumero()
-        if escolha == 1:
-            pass
-        elif escolha == 2:
-            pass
-        elif escolha == 3:
-            pass
-        elif escolha == 4:
-            pass
-    else:
-        print("execute o arquivo 'main.py'")
+criarTarefa()
+
+
+# if __name__ == "__main__":
+#     script_name = os.path.basename(__file__)
+#     if script_name == "main.py":
+#         print(menu)
+#         escolha = recebernumero()
+#         if escolha == 1:
+#             pass
+#         elif escolha == 2:
+#             pass
+#         elif escolha == 3:
+#             pass
+#         elif escolha == 4:
+#             print("programa finalizado")
+#         else:
+#             pass
+#     else:
+#         print("execute o arquivo 'main.py'")
 
 
