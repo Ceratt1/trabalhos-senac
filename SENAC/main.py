@@ -1,15 +1,14 @@
 import os
 from classes import *
 import json
-users = []
-tasks = []
+users = {}
+tasks = {}
 menu = """
 0 - mostrar todas tarefas
 1 - Criar usuario
 2 - criar tarefa
 3 - atribuir tarefa a usuario
 4 - exit"""
-
 
 def criarTarefa():
     numero_pessoas_lista = len(users)
@@ -30,7 +29,19 @@ def criarTarefa():
         else:
             print("Digite apenas S/N - - - - - - ")
     
+def criaruser():
+    nome = input('digite seu nome: ')
+    while True:
+        email= input('digite seu email: ')
+        if "@gmail.com" in email:
+            break
+        else:
+            print("aceitamos apenas emails!")
     
+    
+
+
+
 def recebernumero():
     numeros = [0,1,2,3,4]
     while True:
@@ -45,26 +56,28 @@ def recebernumero():
         except:
             print("Aceitamos apenas números de acordo com as opções do menu")
 
+criaruser()
 
-criarTarefa()
 
 
-# if __name__ == "__main__":
-#     script_name = os.path.basename(__file__)
-#     if script_name == "main.py":
-#         print(menu)
-#         escolha = recebernumero()
-#         if escolha == 1:
-#             pass
-#         elif escolha == 2:
-#             pass
-#         elif escolha == 3:
-#             pass
-#         elif escolha == 4:
-#             print("programa finalizado")
-#         else:
-#             pass
-#     else:
-#         print("execute o arquivo 'main.py'")
+
+
+if __name__ == "__main__":
+    script_name = os.path.basename(__file__)
+    if script_name == "main.py":
+        print(menu)
+        escolha = recebernumero()
+        if escolha == 1:
+            pass
+        elif escolha == 2:
+            criarTarefa()
+        elif escolha == 3:
+            pass
+        elif escolha == 4:
+            print("programa finalizado")
+        else:
+            pass
+    else:
+        print("execute o arquivo 'main.py'")
 
 
