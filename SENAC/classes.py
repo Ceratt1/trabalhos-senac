@@ -31,7 +31,11 @@ class tarefa:
     
 
 
-a = tarefa("Rafa", "chupar um pau", "grande e grosso", data_atual)
 
+if __name__ == "__main__":
+    script_name = os.path.basename(__file__)
+    if script_name == "main.py":
+        pass
+    else:
+        print("execute o arquivo 'main.py'")
 
-print (a)

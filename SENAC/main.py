@@ -3,7 +3,12 @@ from classes import *
 import json
 users = []
 tasks = []
-
+menu = """
+0 - mostrar todas tarefas
+1 - Criar usuario
+2 - criar tarefa
+3 - atribuir tarefa a usuario
+4 - exit"""
 
 
 def criarTarefa(self):
@@ -22,40 +27,38 @@ def criarTarefa(self):
             print("Digite apenas S/N - - - - - - ")
     
     
+def recebernumero():
+    while True:
+        try:
+            escolha = int(input("digite sua escolha de acordo com o número: "))
+            if escolha == 0:
+                return escolha
+                break
+            elif escolha == 1:
+                return escolha
+                break
+            elif escolha == 2:
+                return escolha
+                break
+            elif escolha == 3:
+                return escolha
+                break
+            elif escolha == 4:
+                return escolha
+                break
+            else:
+                print("Não existe está opção")            
+        except:
+            print("Aceitamos apenas números de acordo com as opções do menu")
 
 
+if __name__ == "__main__":
+    script_name = os.path.basename(__file__)
+    if script_name == "main.py":
+        print(menu)
+        escolha = recebernumero()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# if __name__ == "__main__":
-#     script_name = os.path.basename(__file__)
-#     if script_name == "main.py":
-#         print("hii")
-
-
-
-
-
-
-# arquivo abaixo de test
-
-# if __name__ == "__main__":
-#     script_name = os.path.basename(__file__)
-#     if script_name == "main.py":
-#         pass
-#     else:
-#         print("execute o arquivo 'main.py'")
+    else:
+        print("execute o arquivo 'main.py'")
 
 
