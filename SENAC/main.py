@@ -28,26 +28,16 @@ def criarTarefa(self):
     
     
 def recebernumero():
+    numeros = [1,2,3,4]
     while True:
+
         try:
             escolha = int(input("digite sua escolha de acordo com o número: "))
-            if escolha == 0:
-                return escolha
-                break
-            elif escolha == 1:
-                return escolha
-                break
-            elif escolha == 2:
-                return escolha
-                break
-            elif escolha == 3:
-                return escolha
-                break
-            elif escolha == 4:
+            if escolha in numeros:
                 return escolha
                 break
             else:
-                print("Não existe está opção")            
+                print ("Aceitamos apenas números dentro do limite das escolhas")
         except:
             print("Aceitamos apenas números de acordo com as opções do menu")
 
@@ -57,7 +47,14 @@ if __name__ == "__main__":
     if script_name == "main.py":
         print(menu)
         escolha = recebernumero()
-
+        if escolha == 1:
+            pass
+        elif escolha == 2:
+            pass
+        elif escolha == 3:
+            pass
+        elif escolha == 4:
+            pass
     else:
         print("execute o arquivo 'main.py'")
 
