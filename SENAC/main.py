@@ -10,24 +10,29 @@ menu = """
 3 - atribuir tarefa a usuario
 4 - exit"""
 
-def criarTarefa():
+def criarTarefa(): #criar for para mostrar usuarios pela key do dict
     numero_pessoas_lista = len(users)
-    print (numero_pessoas_lista)
-
-
-    titulo = input("digite o titulo da sua tarefa: ")
-    descricao = input("digite a descricao da sua tarefa: ")
-    date_time = data_atual
-    while True:
-        status = input("Deseja ativar sua tarefa? S/N: ").upper()
-        if status == "S":
-            status = True
-            break
-        elif status == "N":
-            status = False
-            break
-        else:
-            print("Digite apenas S/N - - - - - - ")
+    if numero_pessoas_lista != 1:
+        mostrarUsuarios()
+        responsavel = input("digite o nome do responsável pela tarefa: ")
+        titulo = input("digite o titulo da sua tarefa: ")
+        descricao = input("digite a descricao da sua tarefa: ")
+        date_time = data_atual 
+        while True:
+            status = input("Deseja ativar sua tarefa? S/N: ").upper()
+            if status == "S":
+                status = True
+                break
+            elif status == "N":
+                status = False
+                break
+            else:
+                print("Digite apenas S/N - - - - - - ")
+        
+        
+        
+    else:
+        print("necessitamos de usuarios ativos para atribuir tarefas!")
     
 def criaruser():
     nome = input('digite seu nome: ')
@@ -39,8 +44,13 @@ def criaruser():
             print("aceitamos apenas emails!")
     
     userobject = usuario(nome=nome, email=email)
-    users[nome] = userobject
+    users[nome] = userobject.__dict__
     
+def mostrarUsuarios():
+    if len(users) != 0:
+        for myusers in users.keys():
+            print (myusers)
+
 
 
 
@@ -61,15 +71,15 @@ def recebernumero():
 
 
 
-
-
 if __name__ == "__main__":
     script_name = os.path.basename(__file__)
     if script_name == "main.py":
         while True:
             print(menu)
             escolha = recebernumero()
-            if escolha == 1:
+            if escolha == 0:
+                print("ok!\n\n")
+            elif escolha == 1:
                 criaruser()
             elif escolha == 2:
                 criarTarefa()
