@@ -7,14 +7,14 @@ menu = """
 0 - mostrar todas tarefas e users
 1 - Criar usuario
 2 - criar tarefa
-3 - atribuir tarefa a usuario
-4 - exit"""
+3 - exit"""
 
-def criarTarefa(): #criar for para mostrar usuarios pela key do dict
+def criarTarefa(): #atribuir a tarefa ao user selecionado
     numero_pessoas_lista = len(users)
-    if numero_pessoas_lista != 1:
+    if numero_pessoas_lista != 0:
+
         mostrarUsuarios()
-        responsavel = input("digite o nome do responsável pela tarefa: ")
+        responsavel = responsavelverificar()
         titulo = input("digite o titulo da sua tarefa: ")
         descricao = input("digite a descricao da sua tarefa: ")
         date_time = data_atual 
@@ -28,6 +28,8 @@ def criarTarefa(): #criar for para mostrar usuarios pela key do dict
                 break
             else:
                 print("Digite apenas S/N - - - - - - ")
+        taskLocal = tarefa(responsavel=responsavel, tituloTarefa=titulo, descTarefa=descricao, data=data_atual)
+        tasks[titulo] = taskLocal.__dict__
         
         
         
@@ -48,14 +50,22 @@ def criaruser():
     
 def mostrarUsuarios():
     if len(users) != 0:
+        print("usuarios ativos: ")
         for myusers in users.keys():
-            print (myusers)
+            print (f"-{myusers}")
 
-
-
+def responsavelverificar():
+    while True:
+        responsavel = input("digite o nome do responsável pela tarefa: ")
+        for x in users.keys():
+            if responsavel == x:
+                return responsavel
+                break
+            else:
+                pass
 
 def recebernumero():
-    numeros = [0,1,2,3,4]
+    numeros = [0,1,2,3]
     while True:
 
         try:
@@ -68,8 +78,19 @@ def recebernumero():
         except:
             print("Aceitamos apenas números de acordo com as opções do menu")
 
-
-
+def mostrartasksandusers():
+    if len(users) != 0:
+        print("\nUsers Ativos:")
+        for user in users.keys():
+            print(f">{user}")
+    else:
+        print ("não há users ativados")
+    if len(tasks) != 0:
+        print("\nTasks Ativas:")
+        for task in tasks.keys():
+            print(f">{task}")
+    else:
+        print("não há tasks ativas")
 
 if __name__ == "__main__":
     script_name = os.path.basename(__file__)
@@ -78,14 +99,13 @@ if __name__ == "__main__":
             print(menu)
             escolha = recebernumero()
             if escolha == 0:
-                print("ok!\n\n")
+                print("ok!\n")
+                mostrartasksandusers()
             elif escolha == 1:
                 criaruser()
             elif escolha == 2:
                 criarTarefa()
             elif escolha == 3:
-                pass
-            elif escolha == 4:
                 print("programa finalizado")
                 break
             else:
