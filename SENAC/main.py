@@ -4,7 +4,7 @@ import json
 users = {}
 tasks = {}
 menu = """
-0 - mostrar todas tarefas
+0 - mostrar todas tarefas e users
 1 - Criar usuario
 2 - criar tarefa
 3 - atribuir tarefa a usuario
@@ -38,6 +38,8 @@ def criaruser():
         else:
             print("aceitamos apenas emails!")
     
+    userobject = usuario(nome=nome, email=email)
+    users[nome] = userobject
     
 
 
@@ -56,7 +58,6 @@ def recebernumero():
         except:
             print("Aceitamos apenas números de acordo com as opções do menu")
 
-criaruser()
 
 
 
@@ -65,18 +66,22 @@ criaruser()
 if __name__ == "__main__":
     script_name = os.path.basename(__file__)
     if script_name == "main.py":
-        print(menu)
-        escolha = recebernumero()
-        if escolha == 1:
-            pass
-        elif escolha == 2:
-            criarTarefa()
-        elif escolha == 3:
-            pass
-        elif escolha == 4:
-            print("programa finalizado")
-        else:
-            pass
+        while True:
+            print(menu)
+            escolha = recebernumero()
+            if escolha == 1:
+                criaruser()
+            elif escolha == 2:
+                criarTarefa()
+            elif escolha == 3:
+                pass
+            elif escolha == 4:
+                print("programa finalizado")
+                break
+            else:
+                #nunca ira passar de 4, porém apenas por cuidado
+                print("escolha algumas das opções abaixo")
+
     else:
         print("execute o arquivo 'main.py'")
 
