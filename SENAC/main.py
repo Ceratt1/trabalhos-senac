@@ -30,6 +30,8 @@ def criarTarefa(): #atribuir a tarefa ao user selecionado
                 print("Digite apenas S/N - - - - - - ")
         taskLocal = tarefa(responsavel=responsavel, tituloTarefa=titulo, descTarefa=descricao, data=data_atual)
         tasks[titulo] = taskLocal.__dict__
+        users[responsavel]['tarefas'] = taskLocal.__dict__
+        print (users[responsavel])        
         
         
         
@@ -59,8 +61,11 @@ def responsavelverificar():
         responsavel = input("digite o nome do responsável pela tarefa: ")
         for x in users.keys():
             if responsavel == x:
-                return responsavel
-                break
+                if len(users[responsavel]['tarefas']) == 0:
+                    return responsavel
+                    break
+                else:
+                    print(f"O user {responsavel} está ocupado com a tarefa {users[responsavel]['tarefas']} ")
             else:
                 pass
 
@@ -92,9 +97,48 @@ def mostrartasksandusers():
     else:
         print("não há tasks ativas")
 
+
+def iniciarPrograma():
+    try:
+        with open ("users.json", "r") as usersjson2:
+            users_lidos  = json.load(usersjson2)
+            users = users_lidos
+        usersjson.close()
+        with open ("tasks.json", "r") as tasksjson2:
+            tasks_lidas = json.load(tasksjson2)
+            tasks = tasks_lidas
+        tasksjson.close()
+
+    except:
+        print("programa inciado do zero!\n\n")
+
+
+def finalizarPorgrama():
+    try:
+        with open ("users.json", "r") as usersjson:
+            dados_lidos  = json.load(usersjson)
+            users = dados_lidos
+            print(users)
+        usersjson.close()
+        with open ("tasks.json", "r") as tasksjson:
+            tasks_lidas2 = json.load(tasksjson)
+            tasks = tasks_lidas2
+            print(tasks)
+
+    except:
+        with open ("users.json", "w") as usersjson1:
+            json.dump(users, usersjson1)
+        with open ("tasks.json", "w") as tasksjson1:
+            json.dump(tasks, tasksjson1)
+
+
+
+
+
 if __name__ == "__main__":
     script_name = os.path.basename(__file__)
     if script_name == "main.py":
+        iniciarPrograma()
         while True:
             print(menu)
             escolha = recebernumero()
@@ -107,6 +151,7 @@ if __name__ == "__main__":
                 criarTarefa()
             elif escolha == 3:
                 print("programa finalizado")
+                finalizarPorgrama()
                 break
             else:
                 #nunca ira passar de 4, porém apenas por cuidado
@@ -116,3 +161,8 @@ if __name__ == "__main__":
         print("execute o arquivo 'main.py'")
 
 
+
+
+
+#tive alguns problemas em trabalhar com JSON...
+#alterar os objetos pelo dict ou quando salvar em modo dict
