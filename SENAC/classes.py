@@ -1,46 +1,46 @@
-import os;
-import json
-from datetime import datetime
-data_atual = datetime.now().date()
-os.system('cls')
+# import os;
+# import json
+# from datetime import datetime
+# data_atual = datetime.now().date()
+# os.system('cls')
 
-class usuario:
-    def __init__(self, nome,email):
-        self.nome = nome
-        self.email = email
-        self.tarefas = []
+# class usuario:
+#     def __init__(self, nome,email):
+#         self.nome = nome
+#         self.email = email
+#         self.tarefas = []
 
-class tarefa:
-    def __init__(self, responsavel ,tituloTarefa, descTarefa, data, sttsTarefa = True):
-        self.responsavel = responsavel
-        self.titulo = tituloTarefa
-        self.descricao = descTarefa
-        self.status = sttsTarefa
-        self.data = data
-    def alterarStatus(self):
-        if self.status == False:
-            self.status = True
-            print (self.status)
-        else:
-            self.status = False
-            print (self.status)
+# class tarefa:
+#     def __init__(self, responsavel ,tituloTarefa, descTarefa, data, sttsTarefa = True):
+#         self.responsavel = responsavel
+#         self.titulo = tituloTarefa
+#         self.descricao = descTarefa
+#         self.status = sttsTarefa
+#         self.data = data
+#     def alterarStatus(self):
+#         if self.status == False:
+#             self.status = True
+#             print (self.status)
+#         else:
+#             self.status = False
+#             print (self.status)
 
-    def attDesc (self):
-        novaDescricao = input("digite sua nova descrição: ")
-        self.descricao = novaDescricao
-        print("descrição atualizada")
-    def finalizarTarefa (self):
-        pass
-    def __str__(self) -> str:
-        return f"Responsável : {self.responsavel} | Nome: {self.titulo} | Descricao = {self.descricao} | status: {self.status} | Data: {self.data}"
+#     def attDesc (self):
+#         novaDescricao = input("digite sua nova descrição: ")
+#         self.descricao = novaDescricao
+#         print("descrição atualizada")
+#     def finalizarTarefa (self):
+#         pass
+#     def __str__(self) -> str:
+#         return f"Responsável : {self.responsavel} | Nome: {self.titulo} | Descricao = {self.descricao} | status: {self.status} | Data: {self.data}"
     
 
 
 
-if __name__ == "__main__":
-    script_name = os.path.basename(__file__)
-    if script_name == "main.py":
-        pass
-    else:
-        print("execute o arquivo 'main.py'")
+# if __name__ == "__main__":
+#     script_name = os.path.basename(__file__)
+#     if script_name == "main.py":
+#         pass
+#     else:
+#         print("execute o arquivo 'main.py'")
 

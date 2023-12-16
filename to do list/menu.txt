@@ -1,0 +1,27 @@
+Primeiro Menu
+
+"
+1 - sair
+2 - criar user
+3 - login
+"
+
+
+Menu caso tenha task ativa
+
+"""
+1 - exit
+2 - Finalizar task
+3 - Alterar descrição
+4 - Mostrar tasks pendentes
+"""
+
+Menu caso não tenha task ativa
+
+"
+
+1 - exit
+2 - Criar task
+3 - Coletar Task
+4 - Mostrar tasks pendentes
+"
