@@ -13,6 +13,12 @@ menu_semtaskativa = """
 4 - Mostrar tasks pendentes
 """
 
+menu_task_ativa ="""
+1 - exit
+2 - Finalizar task
+3 - Alterar descrição
+4 - Mostrar tasks pendentes
+"""
 
 def returns():
     while True:
@@ -54,11 +60,50 @@ def login():
         print("\nNecessário ter uma conta!\n")
 
 def semtask():
-    print(menu_semtaskativa)
+    while True:
+        print(menu_semtaskativa)
+        segundo_menu = returns()
+        if segundo_menu == 1:
+            print("deslogando...")
+            return True
+            break
+        if segundo_menu == 2:
+            titulo = input("digite o titulo da sua task: ")
+            Descricao = input("digite a descrição da sua task:")
+            newTask = task(titulo=titulo, desc=Descricao)
+            tarefas_dict[titulo] = newTask
+            print ("\n\n\ntarefa gerada com sucesso!\n\n\n")
+        if segundo_menu == 3:
+            if len(list(tarefas_dict.keys())) != 0:
+                nameUser.coletarTask()
+                break
+            else:
+                print("é necessário criar uma tarefa primeiro!")
+        if segundo_menu == 4:
+            print(f"Temos um total de {len(list(tarefas_dict.keys()))} pendentes, sendo ela/as:\n{list(tarefas_dict.keys())}")
+        else:
+            pass
     
+def comtask():
+    while True:
+        print(menu_task_ativa)
+        terceiroMenu = returns()
+        if terceiroMenu == 1:
+            print("deslogando . . .")
+            break
+        elif terceiroMenu == 2:
+            nameUser.finalizarTask()
+            
+        elif terceiroMenu == 3:
+            print(f"Task Atual: {nameUser.task}")
+            nameUser.altdesc()
+            print(f"Task atualizada: {nameUser.task}")
 
 
-
+        elif terceiroMenu == 4:
+            print(f"Temos um total de {len(list(tarefas_dict.keys()))} pendentes, sendo ela/as:\n{list(tarefas_dict.keys())}")
+        else:
+            print("aceitamos apenas números entre as respostas")
 
 
 
@@ -72,18 +117,22 @@ while True:
     resposta = returns()
     
     if resposta == 1:
-        print("programa finalizado!")
+        print("\nprograma finalizado!")
         break
     elif resposta == 2:
         criarConta()
     elif resposta == 3:
         nameLogin = login()
-        if nameLogin != None:
-            nameUser = users_dict[nameLogin]
-            if nameUser.task != None:
-                print("Menu caso tenha task ativa")
-            else:
-                semtask()
+        while True:
+            if nameLogin != None:
+                nameUser = users_dict[nameLogin]
+                if nameUser.task != None:
+                    comtask()
+                else:
+                    saida = semtask()
+                    if saida == True:
+                        break
+                    
     
 
     else:

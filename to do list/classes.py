@@ -63,7 +63,7 @@ class task ():
     def excluirTask(self):
         if self.titulo in list(tarefas_dict):
             del tarefas_dict[self.titulo]
-            print ("tarefa excluida!")
+            print ("\n\ntarefa excluida!\n\n")
 
         else:
             print("Tarefa não localizada!")
@@ -74,9 +74,35 @@ class task ():
         return f"Nome: {self.titulo} Descricao: {self.desc} Status:{self.status}"
 
 
+
+
+
+
+
+
+
+
+
+
+
 # t1 = task("jogar", "codar")
-# u1 = user("gabriel", "x1@gmail.com")
 # tarefas_dict[t1.titulo] = t1
+# u1 = user("gabriel", "x1@gmail.com")
+
+# u1.coletarTask()
+
+# print(u1)
+
+
+
+
+
+
+
+
+
+
+
 # print (tarefas_dict)
 
 # u1.coletarTask()
